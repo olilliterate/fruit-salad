@@ -18,6 +18,7 @@ function addFruit(fruit) {
     const li = document.createElement("li");
     li.textContent = fruit.name;
     li.style.color = "red";
+    li.id = fruit.nutritions.calories;
     li.addEventListener("click", removeFruit);
     fruitList.appendChild(li);
     cal += fruit.nutritions.calories;
@@ -26,6 +27,8 @@ function addFruit(fruit) {
 }
 
 function removeFruit(e) {
+    cal -= e.target.id
+    fruitNurition.textContent = cal;
     e.target.remove();
 }
 
@@ -84,6 +87,6 @@ async function fetchImage(term) {
 }
 
 function addImage(data) {
-    
+
     fruitContainer.src = data.hits[0].webformatURL;
 }
